@@ -1,0 +1,25 @@
+model_params:
+  name: 'VanillaVAE'
+  in_channels: 3
+  latent_dim: 20
+
+exp_params:
+  dataset: cifar10
+  data_path: "dataset/"
+  img_size: 32
+  batch_size: 256 # Better to have a square number
+  num_workers: 4
+  LR: 0.005
+  weight_decay: 0.0
+
+trainer_params:
+  gpus: 0 # [4, 5]
+  log_save_interval: 100
+  min_epochs: 1
+  max_epochs: 30
+  weights_summary: 'full'
+
+logging_params:
+  save_dir: "logs/"
+  name: "VanillaVAE"
+  manual_seed: 1265
