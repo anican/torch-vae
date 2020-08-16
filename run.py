@@ -42,7 +42,6 @@ def main():
 
     runner = Trainer(default_root_dir=f"{tt_logger.save_dir}",
                      logger=tt_logger,
-                     fast_dev_run=True,
                      num_sanity_val_steps=5,
                      **config['trainer_params'])
 

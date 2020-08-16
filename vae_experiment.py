@@ -50,7 +50,6 @@ class VariationalAutoencoderExperiment(pl.LightningModule):
                                                         transform=transform,
                                                         download=True),
                                                 batch_size=144,
-                                                shuffle=True,
                                                 pin_memory=True,
                                                 num_workers=self.params['num_workers'],
                                                 drop_last=True)
