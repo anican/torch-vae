@@ -1,7 +1,7 @@
 model_params:
   name: 'VanillaVAE'
   in_channels: 3
-  latent_dim: 20
+  latent_dim: 24
 
 exp_params:
   dataset: cifar10
@@ -9,8 +9,16 @@ exp_params:
   img_size: 32
   batch_size: 256 # Better to have a square number
   num_workers: 4
-  LR: 0.005
+  LR: 0.001
   weight_decay: 0.0
+
+embed_params:
+  dataset: cifar10
+  data_path: "dataset/"
+  gpu_idx: 0
+  img_size: 32
+  embed_batch_size: 256
+  num_workers: 4
 
 trainer_params:
   gpus: 0 # [4, 5]
