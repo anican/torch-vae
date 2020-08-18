@@ -55,7 +55,6 @@ class Embedder:
                 mu, log_var = self.vae_model.encode(data)
                 means.append(mu.cpu().numpy())
                 log_vars.append(log_var.cpu().numpy())
-                break
         torch.save(means, 'embeddings_means.pt')
         torch.save(log_vars, 'embeddings_log_vars.pt')
         print('Embeddings Saved...')
