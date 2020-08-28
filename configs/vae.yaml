@@ -21,7 +21,7 @@ embed_params:
   num_workers: 4
 
 trainer_params:
-  gpus: 0 # [4, 5]
+  gpus: [4] # [4, 5]
   log_save_interval: 100
   min_epochs: 1
   max_epochs: 50

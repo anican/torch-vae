@@ -17,7 +17,7 @@ class VanillaVAE(BaseVAE):
 
         modules = []
         if hidden_dims is None:
-            hidden_dims = [32, 64, 128]  # 256, 512]
+            hidden_dims = [32, 64, 128, 256]  # 256, 512]
 
         # Build Encoder module
         for dim in hidden_dims:
@@ -33,7 +33,7 @@ class VanillaVAE(BaseVAE):
         self.encoder = nn.Sequential(*modules)
 
         # Mappings to latent dimension for mean and variance
-        num_flat_features = 2048  # hidden_dims[-1] * 4
+        num_flat_features = 1024 # hidden_dims[-1] * 4
         self.fc_mu = nn.Linear(num_flat_features, latent_dim)
         self.fc_var = nn.Linear(num_flat_features, latent_dim)
 
@@ -71,7 +71,7 @@ class VanillaVAE(BaseVAE):
         return [mu, log_var]
 
     def decode(self, z: Tensor) -> Tensor:
-        outputs = self.decoder_input(z).view(-1, 128, 4, 4)
+        outputs = self.decoder_input(z).view(-1, 256, 2, 2)
         outputs = self.decoder(outputs)
         outputs = self.final_layer(outputs)
         return outputs

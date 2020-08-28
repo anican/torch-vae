@@ -52,9 +52,14 @@ class Embedder:
         with torch.no_grad():
             for (data, _) in self.val_dataloader:
                 data = data.to(self.device)
+                print(data.shape)
                 mu, log_var = self.vae_model.encode(data)
+                print(mu.shape)
+                print(log_var.shape)
                 means.append(mu.cpu().numpy())
                 log_vars.append(log_var.cpu().numpy())
+        print(len(means))
+        print(len(log_vars))
         torch.save(means, 'embeddings_means.pt')
         torch.save(log_vars, 'embeddings_log_vars.pt')
         print('Embeddings Saved...')

@@ -1,6 +1,7 @@
 import argparse
 import numpy as np
 import os
+import torch
 from pytorch_lightning import Trainer
 from pytorch_lightning.logging import TestTubeLogger
 import torch.backends.cudnn as cudnn
@@ -47,6 +48,7 @@ def main():
 
     print(f"======= Training {config['model_params']['name']} =======")
     runner.fit(experiment)
+    torch.save(experiment.model.state_dict(), os.path.join(os.getcwd(), 'model.pt'))
 
 
 if __name__ == '__main__':
